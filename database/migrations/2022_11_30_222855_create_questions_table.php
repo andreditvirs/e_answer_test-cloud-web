@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        $type = ['PILGAN', 'URAIAN', 'KRAPLIN'];
+        Schema::create('questions', function (Blueprint $table) use ($type) {
             $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
+            $table->string('number');
+            $table->string('text')->nullable();
+            $table->text('answers')->nullable();
+            $table->enum('type', $type);
+            $table->string('notes')->nullable();
+            $table->integer('tests_id')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('questions');
     }
 };

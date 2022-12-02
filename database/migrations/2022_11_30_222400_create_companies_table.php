@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->enum('type', $type);
-            $table->string('note');
+            $table->string('note')->nullable();;
             $table->timestamps();
         });
     }

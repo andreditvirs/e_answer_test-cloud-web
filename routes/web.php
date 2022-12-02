@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\General\AuthController;
+use App\Http\Controllers\Auth\DashboardController;
+use App\Http\Controllers\Auth\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', [AuthController::class, 'index'])->name('general.auth.index');
+Route::post('/login', [AuthController::class, 'login'])->name('general.auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('general.auth.logout');
+
+Route::group(['prefix' => '/','middleware' => 'auth:web'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('auth.dashboard.index');
+    Route::get('/test/answer-papers', [TestController::class, 'indexAnswerPapers'])->name('auth.test.answerPapers');
 });

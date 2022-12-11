@@ -53,9 +53,9 @@
       }
     </script>
     @if ($test->type == 'IST')
-      @include('auth.components.tests.ist')
+      @include('auth.components.tests.ist', ["test_identity" => $test_identity_temp, "update" => false, "view" => false])
     @elseif ($test->type == 'KRAEPELIN')
-      @include('auth.components.tests.kraepelin')
+      @include('auth.components.tests.kraepelin', ["test_identity" => $test_identity_temp, "update" => false, "view" => false])
     @endif
 </div>
 @endsection

@@ -56,6 +56,44 @@ class TestController extends Controller
         return view('auth.test.indexInputAnswers', compact('user', 'test', 'test_identity_temp', 'questions'));
     }
 
+    public function indexOutputAnswers(Request $request)
+    {
+        $test_identity = TestIdentity::find($request->id);
+        $user = User::where('id', $test_identity->users_id)->first(); // nama peserta
+        $test = Test::where('id', $test_identity->tests_id)->first();
+        $view = true;
+        $update = true;
+
+        $questions = DB::table('tests')
+            ->select("tests.*", "questions.id AS questions_id", "questions.number", "questions.row_number", "questions.col_number", "questions.text", "questions.options", "questions.type", "questions.answer_key", "answers.answer")
+            ->join('test_identities', 'tests.id', 'test_identities.tests_id')
+            ->rightJoin('questions', 'tests.id', 'questions.tests_id')
+            ->leftJoin('answers', 'questions.id', 'answers.questions_id')
+            ->where('test_identities.id', $test_identity->id)
+            ->orderBy('number', 'ASC')
+            ->get();
+        return view('auth.test.indexOutputAnswers', compact('user', 'test', 'test_identity', 'questions', 'view', 'update'));
+    }
+
+    public function editOutputAnswers(Request $request)
+    {
+        $test_identity = TestIdentity::find($request->id);
+        $user = User::where('id', $test_identity->users_id)->first(); // nama peserta
+        $test = Test::where('id', $test_identity->tests_id)->first();
+        $view = false;
+        $update = true; // update or input
+
+        $questions = DB::table('tests')
+            ->select("tests.*", "questions.id AS questions_id", "questions.number", "questions.row_number", "questions.col_number", "questions.text", "questions.options", "questions.type", "questions.answer_key", "answers.answer")
+            ->join('test_identities', 'tests.id', 'test_identities.tests_id')
+            ->rightJoin('questions', 'tests.id', 'questions.tests_id')
+            ->leftJoin('answers', 'questions.id', 'answers.questions_id')
+            ->where('test_identities.id', $test_identity->id)
+            ->orderBy('number', 'ASC')
+            ->get();
+        return view('auth.test.indexOutputAnswers', compact('user', 'test', 'test_identity', 'questions', 'view', 'update'));
+    }
+
     public function storeInputToTemp(Request $request)
     {
         $test_identities = array(
@@ -122,9 +160,41 @@ class TestController extends Controller
         return redirect()->route('auth.test.input')->with('success', 'Anda telah berhasil input jawaban untuk '.$user->name);
     }
 
+    public function updateInputToDatabase(Request $request)
+    {
+        $test_identities = TestIdentity::find($request->id);
+        $user = User::where('id', $test_identities->users_id)->first(); // nama peserta
+        $test = Test::where('id', $test_identities->tests_id)->first();
+        
+        // delete all past answer
+        $answers = Answer::where('test_identities_id', $test_identities->id);
+        $answers->delete();
+        
+        if($test->type == 'IST'){
+            foreach($test->questions as $question){
+                $answer = new Answer;
+                $answer->test_identities_id = $test_identities->id;
+                $answer->questions_id = $question->id;
+                $answer->answer = $request->{$question->id};
+                $answer->save();
+            }
+        }
+        return redirect()->route('auth.test.output')->with('success', 'Anda telah berhasil update jawaban untuk '.$user->name);
+    }
+
     public function destroyInputInTemp()
     {
         TestIdentityTemp::where('stored_by', Auth::user()->id)->delete();
+        AnswerTemp::where('stored_by', Auth::user()->id)->delete();
         return redirect()->route('auth.test.input');
+    }
+
+    public function destroyOutputInDatabase(Request $request)
+    {
+        $test_identity = TestIdentity::find($request->id);
+        $answers = Answer::where('test_identities_id', $test_identity->id);
+        $test_identity->delete();
+        $answers->delete();
+        return redirect()->route('auth.test.output');
     }
 }

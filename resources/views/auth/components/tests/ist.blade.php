@@ -31,14 +31,14 @@
                             <label class="col-form-label col-md-3 col-sm-3 label-align text-left">Tanggal tes <span class="required text-danger">*</span>
                             </label>
                             <div class="col-md-9 col-sm-9 ">
-                                <input value="{{ date('j M Y', strtotime($test_identity_temp->date)) }}" type="text" required="required" class="form-control" readonly>
+                                <input value="{{ date('j M Y', strtotime($test_identity->date)) }}" type="text" required="required" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align text-left">Usia <span class="required text-danger">*</span>
                             </label>
                             <div class="col-md-9 col-sm-9 ">
-                                <input value="{{ date('Y', strtotime($test_identity_temp->date)) - date('Y', strtotime($user->birthday))." Tahun" }}" type="text" required="required" class="form-control" readonly>
+                                <input value="{{ date('Y', strtotime($test_identity->date)) - date('Y', strtotime($user->birthday))." Tahun" }}" type="text" required="required" class="form-control" readonly>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <label class="col-form-label col-md-3 col-sm-3 label-align text-left">Nomor tes <span class="required text-danger">*</span>
                             </label>
                             <div class="col-md-9 col-sm-9 ">
-                                <input value="{{ $test_identity_temp->num_test }}" type="text" required="required" class="form-control" readonly>
+                                <input value="{{ $test_identity->num_test }}" type="text" required="required" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <hr>
-                <form class="col-md-12 mt-3" method="POST" action="{{ route('auth.test.store.to.database') }}">
+                <form class="col-md-12 mt-3" method="POST" action="@if ($update) {{ route('auth.test.output.answers.update', ["id" => $test_identity->id]) }} @else {{ route('auth.test.store.to.database') }} @endif">
                     @csrf
                     @php
                         $num = 0;
@@ -176,7 +176,9 @@
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col">
-                            <button type="submit" class="btn btn-success w-100">Submit</button>
+                            @if(!$view)
+                                <button type="submit" class="btn btn-success w-100">Submit</button>
+                            @endif
                         </div>
                     </div>
                 </form>

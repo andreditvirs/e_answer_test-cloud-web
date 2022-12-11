@@ -3,6 +3,12 @@
       <h3>Fitur</h3>
       <ul class="nav side-menu">
         <li><a href="{{ route('auth.dashboard.index') }}"><i class="fa fa-laptop"></i> Beranda</a></li>
+        <li><a><i class="fa fa-edit"></i> Master Data <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><a href="{{ route('auth.company.index') }}">Perusahaan</a></li>
+            <li><a href="{{ route('auth.user.index') }}">Pengguna</a></li>
+          </ul>
+        </li>
         <li><a><i class="fa fa-edit"></i> Ujian <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="{{ route('auth.test.list') }}">Jenis Lembar Jawaban</a></li>

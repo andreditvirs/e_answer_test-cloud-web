@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class TestIdentityTemp extends Model
 {
     use HasFactory;
 
-    public function company()
-    {
-        return $this->hasOne(Company::class, 'id', 'companies_id');
-    }
+    protected $table = 'test_identities_temp';
+    protected $guarded = [];
 }

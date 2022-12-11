@@ -7,3 +7,4 @@
 <script src="{{ asset('v1/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js') }}"></script>
 <script src="{{ asset('v1/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
 <script src="{{ asset('v1/build/js/custom.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

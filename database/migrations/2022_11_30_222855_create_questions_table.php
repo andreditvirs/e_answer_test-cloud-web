@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        $type = ['PILGAN', 'URAIAN', 'KRAPLIN'];
+        $type = ['PILGAN', 'URAIAN', 'KRAEPELIN'];
         Schema::create('questions', function (Blueprint $table) use ($type) {
             $table->id();
-            $table->string('number');
-            $table->string('text')->nullable();
-            $table->text('answers')->nullable();
+            $table->integer('number');
+            $table->integer('row_number')->nullable();
+            $table->integer('col_number')->nullable();
+            $table->text('text')->nullable();
+            $table->text('options')->nullable();
             $table->enum('type', $type);
+            $table->string('answer_key')->nullable();
             $table->string('notes')->nullable();
             $table->integer('tests_id')->nullable();
             $table->timestamps();

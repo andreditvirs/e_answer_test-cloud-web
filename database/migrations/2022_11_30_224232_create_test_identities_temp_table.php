@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        $type = ['IST', 'KRAEPELIN'];
-        Schema::create('tests', function (Blueprint $table) use ($type){
+        Schema::create('test_identities_temp', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('url_image')->nullable();
-            $table->integer('duration')->default(0)->comment('In minutes');
-            $table->enum('type', $type);
+            $table->integer('users_id');
+            $table->integer('tests_id');
+            $table->integer('testers_id')->nullable()->comment("Alias Psikolog");
+            $table->string('num_test')->nullable();
+            $table->date('date');
+            $table->integer('stored_by')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tests');
+        Schema::dropIfExists('test_identities_temp');
     }
 };

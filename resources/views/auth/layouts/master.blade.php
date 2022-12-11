@@ -5,6 +5,7 @@
     @include('auth.components.meta')
     <title>@yield('title', env('APP_NAME'))</title>
     @include('auth.components.style')
+    @yield('ext-style', '')
   </head>
 
   <body class="nav-md">
@@ -42,5 +43,6 @@
       </div>
     </div>
     @include('auth.components.script')
+    @yield('ext-script', '')
   </body>
 </html>

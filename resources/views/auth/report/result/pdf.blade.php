@@ -98,7 +98,7 @@
             </tr>
             <tr>
                 <td>Tanggal Tes V-Kraepelin</td>
-                <td>: @if ($data["vKraepelin"]) {{ $data["vKraepelin"]->date }} @else @endif</td>
+                <td>: @if ($data["vKraepelin"]) {{ $data["vKraepelin"]->date }} @else Belum tes @endif</td>
                 <td></td>
                 <td></td>
             </tr>

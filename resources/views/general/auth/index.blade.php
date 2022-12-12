@@ -31,7 +31,7 @@
                 <br />
 
                 <div>
-                <h1><i class="fa fa-file"></i> {{ env('APP_NAME') }}</h1>
+                <h1><img src="{{ asset('assets/images/psychoweb-icon.png') }}" width="60"/> {{ env('APP_NAME') }}</h1>
                 <p>©2022 All Rights Reserved. {{ env('APP_NAME') }}! is a electronic answer paper based. Privacy and Terms</p>
                 </div>
             </div>

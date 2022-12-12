@@ -21,5 +21,17 @@ class CompanySeeder extends Seeder
         $company->address = "Surabaya, Jawa Timur";
         $company->type = "PT";
         $company->save();
+
+        $company = new Company();
+        $company->name = "Gojek Indonesia";
+        $company->address = "Surabaya, Jawa Timur";
+        $company->type = "PT";
+        $company->save();
+
+        $company = new Company();
+        $company->name = "Indofood Indonesia";
+        $company->address = "Surabaya, Jawa Timur";
+        $company->type = "PT";
+        $company->save();
     }
 }

@@ -34,6 +34,54 @@ class UserSeeder extends Seeder
         $user->save();
 
         $user = new User();
+        $user->uuid = 'a89056e7-2fea-41b3-968e-9c4d9cfa12b6';
+        $user->username = 'u23456';
+        $user->password = Hash::make('12345678');
+        $user->name = 'User Test 2';
+        $user->role = 'user';
+        $user->gender = 'LK';
+        $user->position_in_company = 'Secertary';
+        $user->address = 'Candi, Sidoarjo';
+        $user->birthplace = 'Sidoarjo';
+        $user->birthday = '1999-12-01';
+        $user->education_level = 'D-III';
+        $user->education_prody = 'IT';
+        $user->companies_id = Company::where('name', 'Gojek Indonesia')->first()->id;
+        $user->save();
+
+        $user = new User();
+        $user->uuid = 'a89056e7-2fea-41b3-968e-9c4d9cfa12b6';
+        $user->username = 'u34567';
+        $user->password = Hash::make('12345678');
+        $user->name = 'User Test 3';
+        $user->role = 'user';
+        $user->gender = 'LK';
+        $user->position_in_company = 'Secertary';
+        $user->address = 'Candi, Sidoarjo';
+        $user->birthplace = 'Sidoarjo';
+        $user->birthday = '1999-12-01';
+        $user->education_level = 'D-III';
+        $user->education_prody = 'IT';
+        $user->companies_id = Company::where('name', 'Indofood Indonesia')->first()->id;
+        $user->save();
+
+        $user = new User();
+        $user->uuid = 'a89056e7-2fea-41b3-968e-9c339cfa12b6';
+        $user->username = 'u45678';
+        $user->password = Hash::make('12345678');
+        $user->name = 'User Test 4';
+        $user->role = 'user';
+        $user->gender = 'LK';
+        $user->position_in_company = 'Secertary';
+        $user->address = 'Candi, Sidoarjo';
+        $user->birthplace = 'Sidoarjo';
+        $user->birthday = '1999-12-01';
+        $user->education_level = 'D-III';
+        $user->education_prody = 'IT';
+        $user->companies_id = Company::where('name', 'Indofood Indonesia')->first()->id;
+        $user->save();
+
+        $user = new User();
         $user->uuid = 'i82346e7-2fea-41b3-968e-9c4d9cfa1111';
         $user->username = 'o12345';
         $user->password = Hash::make('12345678');
@@ -70,6 +118,21 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('12345678');
         $user->name = 'Admin Test 1';
         $user->role = 'admin';
+        $user->gender = 'LK';
+        $user->position_in_company = 'Admin';
+        $user->address = 'Candi, Sidoarjo';
+        $user->birthplace = 'Sidoarjo';
+        $user->birthday = '1999-12-01';
+        $user->education_level = 'S-1';
+        $user->education_prody = 'Psikolog';
+        $user->save();
+
+        $user = new User();
+        $user->uuid = '0c6abebd-eac2-42a2-1111-33e47c507526';
+        $user->username = 'company1';
+        $user->password = Hash::make('12345678');
+        $user->name = 'Company Test 1';
+        $user->role = 'company';
         $user->gender = 'LK';
         $user->position_in_company = 'Admin';
         $user->address = 'Candi, Sidoarjo';

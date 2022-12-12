@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        $type = ['IST', 'KRAEPELIN'];
+        $type = ['IST', 'KRAEPELIN', '16PF', 'DISC'];
         Schema::create('tests', function (Blueprint $table) use ($type){
             $table->id();
             $table->string('name');

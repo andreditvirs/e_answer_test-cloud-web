@@ -28,5 +28,19 @@ class TestSeeder extends Seeder
         $test->duration = 20;
         $test->type = "KRAEPELIN";
         $test->save();
+
+        $test = new Test();
+        $test->name = "16PF";
+        $test->url_image = "assets/images/16pf.png";
+        $test->duration = 40;
+        $test->type = "16PF";
+        $test->save();
+
+        $test = new Test();
+        $test->name = "DISC";
+        $test->url_image = "assets/images/disc.png";
+        $test->duration = 40;
+        $test->type = "DISC";
+        $test->save();
     }
 }

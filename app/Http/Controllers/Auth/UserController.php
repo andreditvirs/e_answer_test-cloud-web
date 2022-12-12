@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function getUserByCompaniesId(Request $request)
+    {
+        $users = User::select('id', 'name')->where('role', 'user')->where('companies_id', $request->companies_id)->get();
+        return json_encode($users);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +33,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $User_types = ['PERSEORANGAN', 'CV', 'PT', 'KOPERASI', 'FIRMA', 'PERSERO', 'LAINNYA'];
-        return view('auth.User.create', compact('User_types'));
+        $user_roles = ['user', 'operator', 'psychologist', 'admin', 'company'];
+        return view('auth.user.create', compact('user_roles'));
     }
 
     /**
@@ -68,7 +74,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user_roles = ['user', 'operator', 'psychologist', 'admin'];
+        $user_roles = ['user', 'operator', 'psychologist', 'admin', 'company'];
         $user = User::find($id);
         return view('auth.user.edit', compact('user', 'user_roles'));
     }

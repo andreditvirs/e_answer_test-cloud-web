@@ -130,7 +130,7 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->uuid = '0c6abebd-eac2-42a2-1111-33e47c507526';
-        $user->username = 'telkom';
+        $user->username = 'telkom1';
         $user->password = Hash::make('12345678');
         $user->name = 'Company Test 1';
         $user->role = 'company';
@@ -146,7 +146,7 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->uuid = '0c6abebd-eac2-42a2-1111-33e47c507526';
-        $user->username = 'gojek';
+        $user->username = 'gojek2';
         $user->password = Hash::make('12345678');
         $user->name = 'Company Test 2';
         $user->role = 'company';
@@ -162,7 +162,7 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->uuid = '0c6abebd-eac2-42a2-1111-33e47c507526';
-        $user->username = 'indofood';
+        $user->username = 'indofood3';
         $user->password = Hash::make('12345678');
         $user->name = 'Company Test 3';
         $user->role = 'company';

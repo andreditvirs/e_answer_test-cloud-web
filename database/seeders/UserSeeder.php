@@ -40,12 +40,13 @@ class UserSeeder extends Seeder
         $user->name = 'User Test 2';
         $user->role = 'user';
         $user->gender = 'LK';
-        $user->position_in_company = 'Secertary';
-        $user->address = 'Candi, Sidoarjo';
+        $user->position_in_company = 'Programmer';
+        $user->address = 'Bandung, Jawa Barat';
         $user->birthplace = 'Sidoarjo';
         $user->birthday = '1999-12-01';
-        $user->education_level = 'D-III';
-        $user->education_prody = 'IT';
+        $user->education_level = 'D-IV';
+        $user->education_prody = 'TEKKOM';
+        $user->education_institution = 'Telkom University';
         $user->companies_id = Company::where('name', 'Gojek Indonesia')->first()->id;
         $user->save();
 
@@ -57,9 +58,9 @@ class UserSeeder extends Seeder
         $user->role = 'user';
         $user->gender = 'LK';
         $user->position_in_company = 'Secertary';
-        $user->address = 'Candi, Sidoarjo';
-        $user->birthplace = 'Sidoarjo';
-        $user->birthday = '1999-12-01';
+        $user->address = 'Malang, Jatim';
+        $user->birthplace = 'Surabaya';
+        $user->birthday = '2000-11-01';
         $user->education_level = 'D-III';
         $user->education_prody = 'IT';
         $user->companies_id = Company::where('name', 'Indofood Indonesia')->first()->id;
@@ -72,11 +73,11 @@ class UserSeeder extends Seeder
         $user->name = 'User Test 4';
         $user->role = 'user';
         $user->gender = 'LK';
-        $user->position_in_company = 'Secertary';
-        $user->address = 'Candi, Sidoarjo';
+        $user->position_in_company = 'Developer Web';
+        $user->address = 'Waru, Sidoarjo';
         $user->birthplace = 'Sidoarjo';
         $user->birthday = '1999-12-01';
-        $user->education_level = 'D-III';
+        $user->education_level = 'D-I';
         $user->education_prody = 'IT';
         $user->companies_id = Company::where('name', 'Indofood Indonesia')->first()->id;
         $user->save();
@@ -129,7 +130,7 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->uuid = '0c6abebd-eac2-42a2-1111-33e47c507526';
-        $user->username = 'company1';
+        $user->username = 'telkom';
         $user->password = Hash::make('12345678');
         $user->name = 'Company Test 1';
         $user->role = 'company';
@@ -140,6 +141,39 @@ class UserSeeder extends Seeder
         $user->birthday = '1999-12-01';
         $user->education_level = 'S-1';
         $user->education_prody = 'Psikolog';
+        $user->companies_id = Company::where('name', 'Telkom Indonesia')->first()->id;
+        $user->save();
+
+        $user = new User();
+        $user->uuid = '0c6abebd-eac2-42a2-1111-33e47c507526';
+        $user->username = 'gojek';
+        $user->password = Hash::make('12345678');
+        $user->name = 'Company Test 2';
+        $user->role = 'company';
+        $user->gender = 'LK';
+        $user->position_in_company = 'Admin';
+        $user->address = 'Candi, Sidoarjo';
+        $user->birthplace = 'Sidoarjo';
+        $user->birthday = '1999-12-01';
+        $user->education_level = 'S-2';
+        $user->education_prody = 'Psikolog';
+        $user->companies_id = Company::where('name', 'Gojek Indonesia')->first()->id;
+        $user->save();
+
+        $user = new User();
+        $user->uuid = '0c6abebd-eac2-42a2-1111-33e47c507526';
+        $user->username = 'indofood';
+        $user->password = Hash::make('12345678');
+        $user->name = 'Company Test 3';
+        $user->role = 'company';
+        $user->gender = 'LK';
+        $user->position_in_company = 'Admin';
+        $user->address = 'Candi, Sidoarjo';
+        $user->birthplace = 'Sidoarjo';
+        $user->birthday = '1999-12-01';
+        $user->education_level = 'S-2';
+        $user->education_prody = 'Psikolog';
+        $user->companies_id = Company::where('name', 'Indofood Indonesia')->first()->id;
         $user->save();
     }
 }

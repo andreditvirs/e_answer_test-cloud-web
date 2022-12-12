@@ -85,6 +85,6 @@ Route::group(['prefix' => '/','middleware' => 'auth:web'], function () {
     Route::group(['prefix' => '/report'], function () {
         Route::get('/result', [ReportController::class, 'indexResult'])->name('auth.report.result.index');
         Route::get('/result/pdf/{id}/download', [ReportController::class, 'createPdf'])->name('auth.report.result.pdf.download');
-        Route::get('/result/pdf/{id}/view', [ReportController::class, 'viewPdf'])->name('auth.report.result.pdf.download');
+        Route::get('/result/pdf/{id}/view', [ReportController::class, 'viewPdf'])->name('auth.report.result.pdf.view');
     });
 });
